@@ -25,12 +25,13 @@ namespace WpfApplication1
         public MainWindow()
         {
             InitializeComponent();
+            
+            Balloon balloon = new Balloon(canvas);
+            balloons.Add(balloon);
 
-            for(var i = 0; i<100; i++)
-            {
-                Balloon newBalloon = new Balloon(canvas, 20, 100);
-                balloons.Add(newBalloon);
-            }
+            //Balloon balloon2 = new Balloon(canvas, 10);
+            //balloons.Add(balloon2);
+
         }
 
         private void growButton_Click(object sender, RoutedEventArgs e)
