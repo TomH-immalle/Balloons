@@ -21,16 +21,29 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
         List<Balloon> balloons = new List<Balloon>();
+        private object rndGen;
 
         public MainWindow()
         {
             InitializeComponent();
-            
-            Balloon balloon = new Balloon(canvas);
-            balloons.Add(balloon);
+            InitializeBalloons();
 
-            //Balloon balloon2 = new Balloon(canvas, 10);
-            //balloons.Add(balloon2);
+
+
+
+        }
+
+        private void InitializeBalloons()
+        {
+            canvas.Children.Clear();
+            balloons.Clear();
+            Random rndGen = new Random();
+            balloons.Clear();
+            for (int i = 0; i < 100; i++)
+            {
+                Balloon balloon = new Balloon(canvas, rndGen);
+                balloons.Add(balloon);
+            }
 
         }
 
@@ -42,6 +55,9 @@ namespace WpfApplication1
             }
         }
 
+
+
+
         private void moveButton_Click(object sender, RoutedEventArgs e)
         {
             foreach (var b in balloons)
@@ -49,5 +65,13 @@ namespace WpfApplication1
                 b.Move();
             }
         }
+
+        private void Initbutton_Click_1(object sender, RoutedEventArgs e)
+        {
+            InitializeBalloons();
+
+        }
+
+
     }
 }
